@@ -148,9 +148,10 @@ Then we plot the result.
 
 ```r
 stepImputedType <- aggregate(steps ~ minutes + dayType, actImputed, mean)
-ggplot(stepImputedType, aes(x=minutes, y=steps, col=dayType)) + 
+ggplot(stepImputedType, aes(x=minutes, y=steps)) + 
         #geom_line() + 
         geom_smooth(span=0.1) +
+        facet_grid(dayType ~ .) + 
         ggtitle("Average number of steps per day type") + 
         labs(x="minutes from midnight", y="average steps")
 ```
